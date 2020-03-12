@@ -1,65 +1,73 @@
 <!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A selection of shoes."/>
-    <title>Push State with no State Object</title>
-    <link rel="stylesheet" href="bootstrap.min.css" >
-    <style type="text/css">
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Examples of the use of the browser history API and pushState/popState events."/>
+        <title>Push State with no State Object</title>
+        <link rel="stylesheet" href="bootstrap.min.css" >
+        <style type="text/css">
 
-        .filterbox {
-            width: 25px;
-            height: 25px;
-            cursor: pointer;
-            display:inline-block;
-        }
-        .red {
-            background-color: red;
-        }
-        .green {
-            background-color: green;
-        }
-        .blue {
-            background-color: blue;
-        }
+            .filterbox {
+                width: 25px;
+                height: 25px;
+                cursor: pointer;
+                display:inline-block;
+            }
+            .red {
+                background-color: red;
+            }
+            .green {
+                background-color: green;
+            }
+            .blue {
+                background-color: blue;
+            }
 
-        .pretend_filter {
-            border-radius:10px;border:1px solid silver;padding:20px;
-        }
+            .pretend_filter {
+                border-radius:10px;border:1px solid silver;padding:20px;
+            }
 
-        #popstate_success {
-            font-weight:bold;
-        }
+            #popstate_success {
+                font-weight:bold;
+            }
 
-        body {
-            padding-top: 50px;
-        }
+            body {
+                padding-top: 50px;
+            }
 
 
 
-    </style>
-</head>
-<body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">pushState experiments</a>
+        </style>
+    </head>
+    <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">pushState experiments</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/index.html">Home</a></li>
+                    <li><a href="/pushstate_without_state.html">without state{}</a></li>
+                    <li><a href="/pushstate_with_state.html">with state{}</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/index.html">Home</a></li>
-                <li><a href="/pushstate_without_state.html">without state{}</a></li>
-                <li><a href="/pushstate_with_state.html">with state{}</a></li>
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div>
-</nav>
-<div class="container">
+    </nav>
+    <div class="container">
 
+    <div class="col-sm-12">
+        <h1>Proper use of pushState</h1>
+        <p>These experiments will demonstrate the use of <code>history.pushState</code> both with and without state objects.</p>
+    </div>
+
+    </div>
+    </body>
+</html>
