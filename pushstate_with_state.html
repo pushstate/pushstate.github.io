@@ -2,47 +2,59 @@
 <html lang="en">
 <head>
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-K7PRG8S');</script>
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-K7PRG8S');</script>
     <!-- End Google Tag Manager -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="A selection of shoes."/>
     <title>Push State with no State Object</title>
-    <link rel="stylesheet" href="bootstrap.min.css" >
+    <link rel="stylesheet" href="bootstrap.min.css">
     <style type="text/css">
 
         .filterbox {
             width: 25px;
             height: 25px;
             cursor: pointer;
-            display:inline-block;
+            display: inline-block;
         }
+
         .red {
             background-color: red;
         }
+
         .green {
             background-color: green;
         }
+
         .blue {
             background-color: blue;
         }
 
         .pretend_filter {
-            border-radius:10px;border:1px solid silver;padding:20px;
+            border-radius: 10px;
+            border: 1px solid silver;
+            padding: 20px;
         }
 
         #popstate_success {
-            font-weight:bold;
+            font-weight: bold;
         }
 
         body {
             padding-top: 50px;
         }
-
 
 
     </style>
@@ -52,13 +64,16 @@
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7PRG8S"
-                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7PRG8S"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
 <!-- End Google Tag Manager (noscript) -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -78,40 +93,43 @@
 <div class="container">
 
 
-<div class="col-sm-12">
-    <h1>pushState <em>with</em> a state object </h1>
-</div>
-<div class="col-sm-6">
-    <p>Let's pretend this is an e-commerce site that sells shoes.</p>
-    <p>Make a couple color selections and watch how the text, URL, and titles change as a result.
-        Then, use the browsers
-        back button to navigate backwards.
-        <p>
-        The difference in this example compared to the previous: we will be sending a state object to reference along with our
-    <code>pushState</code> call. The state object we send will contain the color of the shoe that was selected. </p>
-
-    <br/>
-    <div class="col-sm-10 pretend_filter">
-        <strong>Pretend Shoe Color Filter Selectors:</strong>
-        <br/>
-        <p class="filtertext">You are currently viewing <code style="font-weight:bolder;">all color</code> shoes</p>
-
-        <div class="filterbox red" data-color="red"></div>
-        <div class="filterbox green" data-color="green"></div>
-        <div class="filterbox blue" data-color="blue"></div>
-
+    <div class="col-sm-12">
+        <h1>pushState <em>with</em> a state object </h1>
     </div>
-</div>
-<div class="col-sm-6">
-    <p>If and when a popState event occurs, details will show below:</p>
-    <p id="popstate_success" style="display:none;">A popState event occurred, and we have all the data we need to make sure the pages are in sync. Note the URL, Title, Meta Description, all match what we should see.</p>
-    <br/>
-    <code id="popstate"></code>
-</div>
+    <div class="col-sm-6">
+        <p>Let's pretend this is an e-commerce site that sells shoes.</p>
+        <p>Make a couple color selections and watch how the text, URL, and titles change as a result.
+            Then, use the browsers
+            back button to navigate backwards.
+        <p>
+            The difference in this example compared to the previous: we will be sending a state object to reference
+            along with our
+            <code>pushState</code> call. The state object we send will contain the color of the shoe that was selected.
+        </p>
+
+        <br/>
+        <div class="col-sm-10 pretend_filter">
+            <strong>Pretend Shoe Color Filter Selectors:</strong>
+            <br/>
+            <p class="filtertext">You are currently viewing <code style="font-weight:bolder;">all color</code> shoes</p>
+
+            <div class="filterbox red" data-color="red"></div>
+            <div class="filterbox green" data-color="green"></div>
+            <div class="filterbox blue" data-color="blue"></div>
+
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <p>If and when a popState event occurs, details will show below:</p>
+        <p id="popstate_success" style="display:none;">A popState event occurred, and we have all the data we need to
+            make sure the pages are in sync. Note the URL, Title, Meta Description, all match what we should see.</p>
+        <br/>
+        <code id="popstate"></code>
+    </div>
 
     <div class="col-sm-12">
-        <h3>The code we're using in this example:</h3>
-<pre><code class="javascript">
+        <h3>The very simplified code we're using in this example:</h3>
+        <pre><code class="javascript">
 function sendPushState(color) {
    var myState = {filteredColor: color},
        myTitle = color + " shoes (filtered)",
@@ -119,13 +137,23 @@ function sendPushState(color) {
 
    history.pushState(myState, myTitle, myPath);
 
+   // change the visible title of the document (history.pushState doesn't actually manipulate the browser/tab's title, just the history entry)
    document.title = color + " shoes";
-   document.querySelector('meta[name="description"]').setAttribute('content', color + " shoes");
 
-   console.log("I sent a pushState event with a proper state object");
+   // change the meta description to match the filtered items
+   document.querySelector('meta[name="description"]').setAttribute('content', color + " shoes");
+   // let's log it to the console too, because why not?
+   console.log("I sent a pushState event with a proper state object: ");
+   console.log(myState);
 }
 </code>
 </pre>
+        <p>We use jQuery in this case to intercept the click on the filter options, and call our pushState function:</p>
+        <pre><code class="javascript">    $(".filterbox").on('click', function () {
+        var color = $(this).data('color');
+        changeColor(color);
+        sendPushState(color);
+    });</code></pre>
     </div>
 
 </div>
@@ -139,7 +167,7 @@ function sendPushState(color) {
     function changeColor(color) {
         window.myColor = color;
         $(".filtertext > code").text(color);
-        $("p.filtertext").css({'color': color}); 
+        $("p.filtertext").css({'color': color});
     }
 
     function sendPushState(color) {
@@ -148,9 +176,15 @@ function sendPushState(color) {
             myPath = "/" + color;
 
         history.pushState(myState, myTitle, myPath);
+
+        // change the visible title of the document (history.pushState doesn't actually manipulate the browser/tab's title, just the history entry)
         document.title = color + " shoes";
+
+        // change the meta description to match the filtered items
         document.querySelector('meta[name="description"]').setAttribute('content', color + " shoes");
-        console.log("I sent a pushState event with a proper state object");
+        // let's log it to the console too, because why not?
+        console.log("I sent a pushState event with a proper state object: ");
+        console.log(myState);
     }
 
     $(".filterbox").on('click', function () {
