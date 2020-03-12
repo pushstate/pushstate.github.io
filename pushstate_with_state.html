@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A selection of shoes."/>
+    <title>Push State with no State Object</title>
+    <link rel="stylesheet" href="bootstrap.min.css" >
+    <style type="text/css">
+
+        .filterbox {
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            display:inline-block;
+        }
+        .red {
+            background-color: red;
+        }
+        .green {
+            background-color: green;
+        }
+        .blue {
+            background-color: blue;
+        }
+
+        .pretend_filter {
+            border-radius:10px;border:1px solid silver;padding:20px;
+        }
+
+        #popstate_success {
+            font-weight:bold;
+        }
+
+        body {
+            padding-top: 50px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">pushState experiments</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/index.html">Home</a></li>
+                <li><a href="/pushstate_without_state.html">without state{}</a></li>
+                <li><a href="/pushstate_with_state.html">with state{}</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="container">
+
+
+<div class="col-sm-12">
+    <h1>pushState <em>with</em> a state object </h1>
+</div>
+<div class="col-sm-6">
+    <p>Let's pretend this is an e-commerce site that sells shoes.</p>
+    <p>Make a couple color selections and watch how the text, URL, and titles change as a result.
+        Then, use the browsers
+        back button to navigate backwards.
+        <p>
+        The difference in this example compared to the previous: we will be sending a state object to reference along with our
+    <code>pushState</code> call. The state object we send will contain the color of the shoe that was selected. </p>
+
+    <br/>
+    <div class="col-sm-10 pretend_filter">
+        <strong>Pretend Shoe Color Filter Selectors:</strong>
+        <br/>
+        <p class="filtertext">You are currently viewing <code style="font-weight:bolder;">all color</code> shoes</p>
+
+        <div class="filterbox red" data-color="red"></div>
+        <div class="filterbox green" data-color="green"></div>
+        <div class="filterbox blue" data-color="blue"></div>
+
+    </div>
+</div>
+<div class="col-sm-6">
+    <p>If and when a popState event occurs, details will show below:</p>
+    <p id="popstate_success" style="display:none;">A popState event occurred, and we have all the data we need to make sure the pages are in sync. Note the URL, Title, Meta Description, all match what we should see.</p>
+    <br/>
+    <code id="popstate"></code>
+</div>
+</body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+    window.myColor = "";
+
+    function changeColor(color) {
+        window.myColor = color;
+        $(".filtertext > code").text(color);
+        $("p.filtertext").css({'color': color}); 
+    }
+
+    function sendPushState(color) {
+        var myState = {filteredColor: color},
+            myTitle = color + " shoes (filtered)",
+            myPath = "/" + color;
+
+        history.pushState(myState, myTitle, myPath);
+        document.title = color + " shoes";
+        document.querySelector('meta[name="description"]').setAttribute('content', color + " shoes");
+        console.log("I sent a pushState event with a proper state object");
+    }
+
+    $(".filterbox").on('click', function () {
+        var color = $(this).data('color');
+        changeColor(color);
+        sendPushState(color);
+    });
+
+    $(window).on('popstate', function (event) {
+        var theState = event.originalEvent.state;
+        console.log(theState);
+        if (theState) {
+            // a state object exists, let's do something with that information:
+            var myFilteredColor = theState.filteredColor;
+            changeColor(myFilteredColor);
+            $("#popstate_success").show();
+            $("#popstate").text("Everything should reference " + theState.filteredColor);
+        }
+        if (!theState) {
+            $("#popstate_success").hide();
+            $("#popstate").text("Looks like there's no navigation options left.");
+        }
+
+    });
+
+</script>
+
+</html>
