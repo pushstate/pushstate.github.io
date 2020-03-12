@@ -109,16 +109,18 @@
     <div class="col-sm-12">
         <h3>The code we're using in this example:</h3>
         <code><pre>
-            function sendPushState(color) {
-            var myState = {filteredColor: color},
-            myTitle = color + " shoes (filtered)",
-            myPath = "/" + color;
+function sendPushState(color) {
+   var myState = {filteredColor: color},
+       myTitle = color + " shoes (filtered)",
+       myPath = "/" + color;
 
-            history.pushState(myState, myTitle, myPath);
-            document.title = color + " shoes";
-            document.querySelector('meta[name="description"]').setAttribute('content', color + " shoes");
-            console.log("I sent a pushState event with a proper state object");
-            }
+   history.pushState(myState, myTitle, myPath);
+
+   document.title = color + " shoes";
+   document.querySelector('meta[name="description"]').setAttribute('content', color + " shoes");
+
+   console.log("I sent a pushState event with a proper state object");
+}
         </pre>
         </code>
     </div>
