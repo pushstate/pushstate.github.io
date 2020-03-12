@@ -46,7 +46,9 @@
 
 
         </style>
-
+        <link rel="stylesheet"
+              href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
     </head>
     <body>
     <!-- Google Tag Manager (noscript) -->
@@ -76,8 +78,11 @@
     <div class="container">
 
     <div class="col-sm-12">
-        <h1>Proper use of pushState</h1>
-        <p>These experiments will demonstrate the use of <code>history.pushState</code> both with and without state objects.</p>
+        <h1>Experiments with pushState</h1>
+        <p>These experiments will demonstrate the use of <code>history.pushState()</code> both with and without state objects.</p>
+
+        <h3>A few notes</h3>
+        <p>popstate isn't fired simply by calling pushState. </p>
     </div>
 
     </div>

@@ -47,6 +47,9 @@
 
 
     </style>
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -104,8 +107,11 @@
     <p>If and when a popState event occurs, details will show below:</p>
     <code id="popstate"></code>
 </div>
+</div>
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 <script>
     window.myColor = "";
 
